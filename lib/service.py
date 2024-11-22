@@ -30,7 +30,7 @@ class Books:
 
     def change_status(self, id: uuid.UUID, status: Status) -> Book | None:
         books = self.storage.list()
-        book = filter(lambda book: book.id == id, books)
+        book = filter(lambda obj: obj.id == id, books)
         if book:
             book.status = status
         else:

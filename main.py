@@ -33,4 +33,4 @@ if __name__ == '__main__':
 
     service.delete('40841259-799d-4910-b4c6-6c53d58a8629')
 
-    service.search('author', 'Title 1')
+    service.search('author', 'Author 1')
