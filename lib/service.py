@@ -36,7 +36,7 @@ class Books:
         else:
             print('The book does not exist.')
 
-    def search(self, field, value: str | int) -> list[Book]:
+    def search(self, field: str, value: str | int) -> list[Book]:
         books = self.storage.list()
         if field == 'author':
             books = filter(lambda book: book.author == value, books)
