@@ -20,4 +20,4 @@ class JSONStorage:
 
 
 class TextStorage:
-    raise NotImplementedError
+    pass

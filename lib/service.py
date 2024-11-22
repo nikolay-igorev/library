@@ -16,7 +16,7 @@ class Storage(typing.Protocol):
 class Books:
 
     def __init__(self):
-        self.storage = JSONStorage()
+        self.storage = JSONStorage('./database.json')
 
     def create(self, book: Book) -> None:
         books = self.storage.list()
@@ -30,9 +30,13 @@ class Books:
 
     def change_status(self, id: uuid.UUID, status: Status) -> Book | None:
         books = self.storage.list()
-        book = filter(lambda obj: obj.id == id, books)
-        if book:
-            book.status = status
+        books = list(filter(lambda book: book.id == id, books))
+
+        if books:
+            books[0].status = status
+            books = list(filter(lambda book: book.id != id, self.storage.list())) + [books[0]]
+            self.storage.put(list(books))
+
         else:
             print('The book does not exist.')
 

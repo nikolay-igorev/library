@@ -18,6 +18,5 @@ class Book:
     def from_dict(cls, data: dict) -> 'Book':
         return cls(**data)
 
-    @classmethod
     def to_dict(self) -> dict:
         return dataclasses.asdict(self)
