@@ -25,3 +25,10 @@ python main.py change-status
 ```
 python -m pytest ./tests
 ```
+
+Статический анализ:
+```
+uv run mypy ./
+uv run ruff format .
+uv run ruff check --fix .
+```

@@ -78,13 +78,15 @@ def test_search_books():
         ),
     ]
 
-    books = books_author1 + [lib.entity.Book(
-        id="3",
-        title="title3",
-        author="author2",
-        year=2001,
-        status=lib.entity.Status.exists,
-    )]
+    books = books_author1 + [
+        lib.entity.Book(
+            id="3",
+            title="title3",
+            author="author2",
+            year=2001,
+            status=lib.entity.Status.exists,
+        )
+    ]
 
     storage = unittest.mock.Mock(spec=lib.repository.Storage)
     storage.list.return_value = books
