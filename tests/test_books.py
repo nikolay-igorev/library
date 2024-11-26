@@ -61,30 +61,6 @@ def test_change_status_book():
 
 
 def test_search_books():
-    books = [
-        lib.entity.Book(
-            id="1",
-            title="title1",
-            author="author1",
-            year=2000,
-            status=lib.entity.Status.exists,
-        ),
-        lib.entity.Book(
-            id="1",
-            title="title2",
-            author="author1",
-            year=2000,
-            status=lib.entity.Status.exists,
-        ),
-        lib.entity.Book(
-            id="1",
-            title="title3",
-            author="author2",
-            year=2001,
-            status=lib.entity.Status.exists,
-        ),
-    ]
-
     books_author1 = [
         lib.entity.Book(
             id="1",
@@ -94,13 +70,21 @@ def test_search_books():
             status=lib.entity.Status.exists,
         ),
         lib.entity.Book(
-            id="1",
+            id="2",
             title="title2",
             author="author1",
             year=2000,
             status=lib.entity.Status.exists,
         ),
     ]
+
+    books = books_author1 + [lib.entity.Book(
+        id="3",
+        title="title3",
+        author="author2",
+        year=2001,
+        status=lib.entity.Status.exists,
+    )]
 
     storage = unittest.mock.Mock(spec=lib.repository.Storage)
     storage.list.return_value = books
